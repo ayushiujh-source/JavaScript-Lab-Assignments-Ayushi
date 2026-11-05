@@ -39,8 +39,3 @@ node task1.js
 
 For HTML tasks, open the relevant HTML file in a modern browser and interact with the page.
 
-## Important source notes
-
-Two supplied files are empty: `lab-6-json-text/task3.js` and `lab-15-promises-async-await/task3.js`. They are preserved without invented solutions. The Lab 9 localStorage task should be tested using a local web server before submission.
-
-**Student:** Ayushi · **Roll No.:** BCS2025414
