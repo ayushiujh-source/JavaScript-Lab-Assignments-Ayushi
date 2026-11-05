@@ -121,3 +121,5 @@ for slug,title,tasks in LABS:
     readme += ["## How to Run","","Run JavaScript with Node.js from this folder, for example: node task1.js.","Open HTML files in a modern browser and use the page controls.","","## Evidence Note","","PNG files are generated output-preview panels, not live screenshots of an IDE or browser. Verify interactive HTML behaviour in a browser before submission.",""]
     (folder/"README.md").write_text("\n".join(readme),encoding="utf-8")
 print(f"Generated {len(LABS)} labs and {total} output-preview images.")
+
+# Regeneration trigger: build the generated lab portfolio on the next workflow run.
