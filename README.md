@@ -6,36 +6,11 @@
 **Subject:** JavaScript Lab  
 **Institution:** Invertis University, Bareilly
 
-This repository contains 15 JavaScript lab folders with 48 tasks, source files, task-wise output images and lab READMEs.
+This repository contains 15 JavaScript labs and 48 practical tasks. Each lab has a separate folder with source files, output images and a task README.
 
-## Repository Structure
+## Practical Index
 
-```text
-JavaScript-Lab-Assignments-Ayushi/
-├── README.md
-├── .github/workflows/sync-and-test.yml
-└── javascript-lab-assignments/
-    ├── README-JavaScript-Lab.md
-    ├── lab-1-first-javasript/
-    ├── lab-2-operators-calculator/
-    ├── lab-3-conditions-loops/
-    ├── lab-4-writing-functions/
-    ├── lab-5-arrays-methods/
-    ├── lab-6-json-text/
-    ├── lab-7-constructor-functions-classes/
-    ├── lab-8-inheritance-methods-composition/
-    ├── lab-9-dom-validation-storage-quiz/
-    ├── lab-10-objects-destructuring/
-    ├── lab-11-scope-closures/
-    ├── lab-12-callbacks-higher-order-functions/
-    ├── lab-13-reduce-some-every-map/
-    ├── lab-14-timers-intervals/
-    └── lab-15-promises-async-await/
-```
-
-## Lab Index
-
-| Lab | Practical | Tasks |
+| Lab | Topic | Tasks |
 |---|---|---:|
 | 1 | First JavaScript Programs | 3 |
 | 2 | Operators and Calculator | 3 |
@@ -54,37 +29,18 @@ JavaScript-Lab-Assignments-Ayushi/
 | 15 | Promises and Async/Await | 4 |
 | **Total** | **15 Labs** | **48 Tasks** |
 
-## How to Run
+## Run a task
 
-**JavaScript files**
-
-Install Node.js, open a terminal in the task's lab folder, and run:
+For JavaScript files, use Node.js from the relevant lab folder:
 
 ```bash
 node task1.js
 ```
 
-Replace `task1.js` with the task file you want to run.
+For HTML tasks, open the relevant HTML file in a modern browser and interact with the page.
 
-**HTML files**
+## Important source notes
 
-Open the relevant `.html` file in a modern browser. For interactive tasks, use the page controls and inspect the browser console when required.
+Two supplied files are empty: `lab-6-json-text/task3.js` and `lab-15-promises-async-await/task3.js`. They are preserved without invented solutions. The Lab 9 localStorage task should be tested using a local web server before submission.
 
-## Output Evidence
-
-Each task has a corresponding `taskN-output.png` file. The lab-specific README explains the task, how it is run and any verification limitations.
-
-## Known Source Gaps
-
-- `lab-6-json-text/task3.js` is empty in the supplied reference repository.
-- `lab-15-promises-async-await/task3.js` is empty in the supplied reference repository.
-- `lab-9-dom-validation-storage-quiz/task3.html` has a localStorage persistence limitation in the isolated browser preview; test it from a normal local web server before submission.
-
-These files are deliberately documented rather than silently replaced with invented task code.
-
-## Validation
-
-The GitHub Actions workflow checks JavaScript syntax and runs every non-empty `.js` task file with Node.js. HTML interactions should also be opened and tested in a browser.
-
----
 **Student:** Ayushi · **Roll No.:** BCS2025414
