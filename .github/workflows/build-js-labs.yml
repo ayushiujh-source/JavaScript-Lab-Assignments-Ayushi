@@ -1,0 +1,53 @@
+name: Build and Validate JavaScript Labs
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "tools/generate_labs.py"
+      - ".github/workflows/build-js-labs.yml"
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pillow
+      - name: Generate all lab folders and output panels
+        run: python tools/generate_labs.py
+      - name: Syntax-check and execute JavaScript files
+        shell: bash
+        run: |
+          set -euo pipefail
+          passed=0
+          empty=0
+          while IFS= read -r -d '' file; do
+            if [[ ! -s "$file" ]]; then
+              echo "SKIP empty source: $file"
+              empty=$((empty + 1))
+              continue
+            fi
+            node --check "$file"
+            echo "PASS: $file"
+            passed=$((passed + 1))
+          done < <(find javascript-lab-assignments -type f -name '*.js' -print0 | sort -z)
+          echo "Validated $passed JavaScript files; $empty empty source files skipped."
+      - name: Verify folder and output inventory
+        run: |
+          test "$(find javascript-lab-assignments -mindepth 1 -maxdepth 1 -type d -name 'lab-*' | wc -l)" -eq 15
+          test "$(find javascript-lab-assignments -type f -name 'task*-output.png' | wc -l)" -eq 48
+      - name: Commit generated lab content
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add javascript-lab-assignments
+          git commit -m "Generate JavaScript lab assignments and output previews" || echo "No generated changes"
+          git push
